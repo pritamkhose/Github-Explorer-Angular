@@ -1,0 +1,25 @@
+<header>
+	<mat-card-title>
+		<mat-form-field class="example-full-width">
+			<input matInput type="text"  placeholder="Search" id="searchModel" 
+         [(ngModel)]="searchModel" 
+         (ngModelChange)="updateSearchModel($event)">
+           <button mat-button *ngIf="searchModel" matSuffix mat-icon-button aria-label="Clear" (click)="searchModel=''">
+            <mat-icon>close</mat-icon>
+          </button>
+    </mat-form-field>
+    <span>&nbsp;&nbsp;</span>
+    <button mat-raised-button color="primary" (click)="callWeb(searchModel)">Search</button>
+  </mat-card-title>
+</header>
+<div class="row" style="padding: 30px;">
+	<mat-card *ngFor="let aObj of aList" (click)="showCard(aObj)" class="w3-container w3-margin example-card">
+		<mat-card-header>
+			<img  src="{{aObj.avatar_url}}" alt="{{aObj.login}}" height="30" width="30"> 
+			<mat-card-title>{{aObj.login}}</mat-card-title>
+	 </mat-card-header>
+	</mat-card>
+</div>
+<div class="row" style="padding-left: 30px;">
+  <p class="pstyle" *ngFor="let aNo of aTotalCountItems" color="normal"  (click)="pagination(aNo)" >{{aNo}}</p>
+</div>

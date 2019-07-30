@@ -1,0 +1,100 @@
+<!-- https://www.w3schools.com/html/html_layout.asp 
+https://www.w3schools.com/icons/fontawesome5_icons_maps.asp -->
+
+<span *ngIf="aUserInfo != null; else elseBlock">
+<header>
+  <div class="row">
+  <div class="col-sm-4">
+    <img  src="{{aUserInfo.avatar_url}}" alt="{{aUserInfo.name}}" height="150" width="150">
+  </div>
+  <div class="col-sm-4">
+    <mat-card-header>
+      <mat-card-title>{{aUserInfo.name}}</mat-card-title>
+      <mat-card-subtitle *ngIf="aUserInfo.bio != null">{{aUserInfo.bio}}</mat-card-subtitle>
+      <mat-card-subtitle>
+        <br/>
+        <p align="left">
+          <a routerLink="/repositories/{{aUserInfo.login}}"><i class='far fa-file-code' style='font-size:16px;color:indigo'>&nbsp;{{aUserInfo.public_repos}}</i></a>&nbsp;&nbsp;
+          <i class='far fa-window-maximize' style='font-size:16px;color:teal'>&nbsp;{{aUserInfo.public_gists}}</i>&nbsp;&nbsp;
+          <a routerLink="/followers/{{aUserInfo.login}}"><i class='fas fa-user-plus' style='font-size:16px;color:lime'>&nbsp;{{aUserInfo.followers}}</i></a>&nbsp;&nbsp;
+          <a routerLink="/following/{{aUserInfo.login}}"><i class='fas fa-user-friends' style='font-size:16px;color:cyan'>&nbsp;{{aUserInfo.following}}</i></a>&nbsp;
+       <a routerLink="/stars/{{aUserInfo.login}}"><i class='far fa-star' style='font-size:16px;color:orange'></i></a>
+    
+      </p>
+      </mat-card-subtitle>
+	</mat-card-header>
+  </div>
+  <div class="col-sm-4">
+     <mat-card-content>
+      <p *ngIf="aUserInfo.email != null" align="left"><i class='far fa-envelope' style='font-size:16px;color:teal'>&nbsp;&nbsp;Email : {{aUserInfo.email}}</i></p>
+      <p *ngIf="aUserInfo.location != null" align="left"><i class='far fa-flag' style='font-size:16px;color:teal'>&nbsp;&nbsp;Location : {{aUserInfo.location}}</i></p>
+       <p *ngIf="aUserInfo.blog != null" align="left"><i class='far fa-comment-alt' style='font-size:16px;color:teal'>&nbsp;&nbsp;Blog : {{aUserInfo.blog}}</i></p>
+      <p *ngIf="aUserInfo.created_at != null" align="left"><i class='far fa-calendar-check' style='font-size:16px;color:teal'>&nbsp;&nbsp;Created at : {{aUserInfo.created_at | date:'dd-MMM-yyyy hh:mm a'}}</i></p>
+      <p *ngIf="aUserInfo.updated_at != null" align="left"><i class='far fa-clock' style='font-size:16px;color:teal'>&nbsp;&nbsp;Last updated at : {{aUserInfo.updated_at | date:'dd-MMM-yyyy hh:mm a'}}</i></p>
+  </mat-card-content>
+  </div>
+</div>
+</header>
+
+<section>
+  <nav>
+    <app-followers></app-followers>
+    <p></p>
+    <app-following></app-following>
+  </nav>
+  
+  <article>
+   <app-repositories></app-repositories>
+   <br/>
+   <app-stars></app-stars>
+  </article>
+</section>
+
+<!-- <footer>
+ <app-project></app-project> 
+</footer>  -->
+</span>
+ <ng-template #elseBlock><header><mat-card-subtitle>{{isLoading}}</mat-card-subtitle></header></ng-template>
+
+<!-- 
+  <img  src="{{aUserInfo.avatar_url}}" alt="{{aUserInfo.name}}" height="80" width="80"> 
+  <mat-card-header>
+		<mat-card-title>{{aUserInfo.name}}</mat-card-title>
+		<mat-card-subtitle>{{aUserInfo.bio}}</mat-card-subtitle>
+	</mat-card-header>
+
+  <mat-card-content>
+    <p> Email : {{aUserInfo.email}} </p>
+    <p> Location : {{aUserInfo.location}} </p>
+    <p> Created at : {{aUserInfo.created_at}} </p>
+    <p> Last updated at : {{aUserInfo.updated_at}} </p>
+  </mat-card-content>
+
+<span *ngIf="aUserInfo != null; else elseBlock">
+	<mat-card-header>
+    <img  src="{{aUserInfo.avatar_url}}" alt="{{aUserInfo.name}}" height="80" width="80"> 
+		<mat-card-title>{{aUserInfo.name}}</mat-card-title>
+		<mat-card-subtitle>{{aUserInfo.bio}}</mat-card-subtitle>
+	</mat-card-header>
+
+  <mat-card-content>
+    <p>  </p>
+    <p> Email : {{aUserInfo.email}} </p>
+    <p> Location : {{aUserInfo.location}} </p>
+    <p> Created at : {{aUserInfo.created_at}} </p>
+    <p> Last updated at : {{aUserInfo.updated_at}} </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <div class="w3-row">
+      <div class="w3-col s3 w3-green w3-center"><button mat-button>Public Repos {{aUserInfo.public_repos}}</button></div>
+      <div class="w3-col s3 w3-red w3-center"><button mat-button>Public Gists {{aUserInfo.public_gists}}</button></div>
+      <div class="w3-col s3 w3-yellow w3-center"><button mat-button>Followers {{aUserInfo.followers}}</button></div>
+      <div class="w3-col s3 w3-blue w3-center"><button mat-button>Following {{aUserInfo.following}}</button></div>
+    </div>
+  </mat-card-actions>
+    <app-followers></app-followers>
+    <app-following></app-following>
+    <app-repositories></app-repositories>
+  <ng-template #elseBlock><mat-card-subtitle>Loading...</mat-card-subtitle></ng-template>
+</span> -->
+	<!-- <span mat-card-avatar class="example-header-image"></span> -->

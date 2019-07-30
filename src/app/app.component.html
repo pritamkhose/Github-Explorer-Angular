@@ -1,0 +1,108 @@
+<!-- https://mdbootstrap.com/docs/jquery/navigation/navbar/ 
+https://www.w3schools.com/icons/icons_reference.asp
+-->
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark unique-color" [containerInside]="false">
+
+	<!-- Navbar brand -->
+	<mdb-navbar-brand><a class="navbar-brand" routerLink="/home" routerLinkActive="active">My GitHub</a></mdb-navbar-brand>
+
+	<!-- Collapsible content -->
+	<links>
+
+		<!-- Links -->
+		<ul class="navbar-nav mr-auto">
+			<!-- <li class="nav-item active"> -->
+			<li class="nav-item" ng-class="{ active: isActive('/home') }">
+				<a class="nav-link waves-light" mdbWavesEffect routerLink="/home" routerLinkActive="active"> Home
+					<span class="sr-only">(current)</span>
+        </a>
+      </li>
+
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/profile" routerLinkActive="active">User</a></li>
+    <!-- <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/repositories" routerLinkActive="active">Repositories</a></li>
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/profile/{{name}}" routerLinkActive="active">{{name}} Profile</a></li>
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/repositories/{{name}}" routerLinkActive="active">Repositories</a></li>
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/project/{{name}}" routerLinkActive="active">Project</a></li>
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/stars/{{name}}" routerLinkActive="active">Stars</a></li>
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/followers/{{name}}" routerLinkActive="active">Followers</a></li>
+    <li class="nav-item"><a class="nav-link  waves-light" mdbWavesEffect routerLink="/following/{{name}}" routerLinkActive="active">Following</a></li> -->
+
+      <!-- Dropdown -->
+      <!-- <li class="nav-item dropdown" dropdown>
+        <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+          Profile<span class="caret"></span></a>
+        <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/profile" routerLinkActive="active">Overview</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/repositories" routerLinkActive="active">Repositories</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/project" routerLinkActive="active">Project</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/stars" routerLinkActive="active">Stars</a>
+          <div class="divider dropdown-divider"></div>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/followers" routerLinkActive="active">Followers</a>
+          <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/following" routerLinkActive="active">Following</a>
+        </div>
+      </li> -->
+
+    </ul>
+    <!-- Links -->
+
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+       <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://github.com/pritamkhose">
+          <mdb-icon fab icon="github"></mdb-icon>
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://www.linkedin.com/in/pritamkumar-khose-68a01653/">
+          <mdb-icon fab icon="linkedin"></mdb-icon>
+        </a>
+       </li>
+       <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://www.instagram.com/p.khose">
+          <mdb-icon fab icon="instagram"></mdb-icon>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://wa.me/919876543210">
+          <mdb-icon fab icon="whatsapp"></mdb-icon>
+        </a>
+          <!-- https://faq.whatsapp.com/en/android/26000030/ -->
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://www.facebook.com/pritam.khose">
+          <mdb-icon fab icon="facebook"></mdb-icon>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="https://twitter.com/PritamKhose">
+          <mdb-icon fab icon="twitter"></mdb-icon>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="mailto:pritamkhose@gmail.com?Subject=Hello%20Pritam">
+          <mdb-icon fab icon="google-plus"></mdb-icon>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          <div class="btn-group" mdbDropdown>
+            <mdb-icon fas icon="user" mdbDropdownToggle></mdb-icon>
+            <div class="dropdown-menu dropdown-menu-right dropdown-primary">
+              <a class="dropdown-item" routerLink="/profile" routerLinkActive="active">User</a>
+              <!-- <a class="dropdown-item" routerLink="/repositories" routerLinkActive="active">Repositories</a> -->
+              <!-- <a class="dropdown-item" routerLink="/project" routerLinkActive="active">Project</a>
+              <a class="dropdown-item" routerLink="/stars" routerLinkActive="active">Stars</a>
+              <div class="divider dropdown-divider"></div>
+              <a class="dropdown-item" routerLink="/followers" routerLinkActive="active">Followers</a>
+              <a class="dropdown-item" routerLink="/following" routerLinkActive="active">Following</a> -->
+            </div>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </links>
+  <!-- Collapsible content -->
+
+</mdb-navbar>
+<!--/.Navbar-->
+<router-outlet></router-outlet>

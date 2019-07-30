@@ -1,0 +1,95 @@
+<!-- https://material.angular.io/components/card/examples
+https://www.w3schools.com/icons/default.asp
+https://www.w3schools.com/icons/ 
+https://getbootstrap.com/docs/4.0/components/card/
+https://www.w3schools.com/bootstrap4/bootstrap_tables.asp 
+https://getbootstrap.com/docs/4.1/components/tooltips/ 
+https://stackoverflow.com/questions/33700266/how-can-i-get-new-selection-in-select-in-angular-2 -->
+
+<div class="card bg-light" style="">
+	<div class="card-header">
+		<div style="width: 50%; float:left;">Repositories</div>
+		<div style="width: 50%; float:right; text-align: end;">
+			<span>
+        Sort
+        <select [(ngModel)]="sort"  (change)="onChange($event.target.value)" id="sort"  value="4" style="">
+          <option value="created">Created</option>
+          <option value="full_name">Name</option>
+          <option value="pushed">Pushed</option>
+          <option value="updated">Updated</option>
+        </select> 
+      </span> &nbsp;&nbsp;
+      <span (click)="toggleOrder()" >
+        <i *ngIf="desc === 'asc'" class='far fa-hand-point-up' style='color:#007bff'></i>
+        <i *ngIf="desc === 'desc'" class='far fa-hand-point-down' style='color:#007bff'></i>
+      </span> &nbsp;&nbsp;
+			<span>
+        Per Page
+        <select [(ngModel)]="perpage"  (change)="onChange($event.target.value)" id="perpage"  value="1" style="">
+          <option value="10">10</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+          <option value="300">300</option>
+          <option value="500">500</option>
+          <option value="1000">1000</option>
+        </select> 
+      </span> &nbsp;&nbsp;
+    	<span (click)="toggleView()" >
+        <i *ngIf="!isStyleGrid" class='fa fa-th' style='color:#007bff'></i>
+        <i *ngIf="isStyleGrid" class='fa fa-th-list' style='color:#007bff'></i>
+      </span>
+    </div>
+  </div>
+  <span *ngIf="isStyleGrid; else elseBlock">
+    <div class="row w3-margin">
+      <mat-card class="example-card w3-margin col-sm-5" *ngFor="let aObj of aList" (click)="showCard(aObj)" >
+        <mat-card-header>
+          <mat-card-title>{{aObj.name}}</mat-card-title>
+          <mat-card-subtitle>{{aObj.description}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          &nbsp;&nbsp;&nbsp;&nbsp;<i class='fas fa-code-branch' style='color:indigo'>&nbsp;{{aObj.forks}}</i> &nbsp;&nbsp;
+        <i class='far fa-star' style='color:orange'>&nbsp;{{aObj.stargazers_count}}</i>&nbsp;&nbsp;&nbsp;
+        <i class='fas fa-glasses' style='color:cyan'>&nbsp;{{aObj.watchers}}</i>&nbsp;&nbsp;&nbsp;
+        <i class='far fa-circle' style='color:lime'>&nbsp;{{aObj.language}}</i>&nbsp;&nbsp;&nbsp;
+        <p align="right">&nbsp;&nbsp;&nbsp;&nbsp;<i class='far fa-calendar-alt' style='color:teal'>&nbsp;&nbsp;{{aObj.updated_at | date:'dd-MMM-yyyy hh:mm a'}}</i></p>
+        </mat-card-content>   
+      </mat-card>
+    </div>
+   </span>
+  <ng-template #elseBlock>
+    <span>
+      <div class="table-responsive-sm">          
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th> </th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Language</th>
+              <th>Forks</th>
+              <th>Stars</th>
+              <th>Watchers</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let aObj of aList; let i = index" [attr.data-index]="i">
+              <td>{{i+1}}</td>
+              <td (click)="showCard(aObj)" data-toggle="tooltip" data-placement="bottom" title="{{aObj.name}}">{{aObj.name  | slice:0:30}}</td>
+              <td (click)="showCard(aObj)" data-toggle="tooltip" data-placement="bottom" title="{{aObj.description}}">{{aObj.description | slice:0:30 }}
+              </td>
+              <td>{{aObj.language}}</td>
+              <td>{{aObj.forks}}</td>
+              <td>{{aObj.stargazers_count}}</td>
+              <td>{{aObj.watchers}}</td>
+              <td>{{aObj.updated_at | date:'dd-MMM-yyyy hh:mm a'}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>  
+    </span>
+  </ng-template>
+
+</div>
